@@ -2,11 +2,16 @@
 
 **See where game sounds come from.** Audio Lumination turns your game's surround sound into a glow around the edge of your screen, so deaf and hard-of-hearing players can tell where footsteps, gunfire and explosions are coming from.
 
+[![Latest release](https://img.shields.io/github/v/release/Bjeffrey85/AudioLumination?label=download&color=2ea44f)](https://github.com/Bjeffrey85/AudioLumination/releases/latest)
 ![Windows 10/11](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6)
 ![C++17](https://img.shields.io/badge/C%2B%2B-17-00599C)
 ![Status: beta](https://img.shields.io/badge/status-beta-orange)
 
 <!-- Add a screenshot or GIF here, e.g. ![Audio Lumination](docs/screenshot.png) -->
+
+### ⬇️ [Download the latest version](https://github.com/Bjeffrey85/AudioLumination/releases/latest/download/AudioLumination.exe)
+
+[All releases and release notes](https://github.com/Bjeffrey85/AudioLumination/releases/latest)
 
 ---
 
@@ -26,6 +31,7 @@
 - **Speaker check and live channel meters:** confirm your whole setup in seconds.
 - **Hotkey toggle** (default `Ctrl+Alt+L`), tray icon, starts with Windows.
 - **Fully automatic install:** sets up the virtual audio driver for you, plus desktop and Start menu icons.
+- **Automatic updates:** checks this repo's latest release at launch and every 12 hours, then installs the update and restarts.
 - **Clean uninstall:** puts your sound back on your headphones and removes everything it added.
 - **Doesn't touch the game:** no injection and no memory reading, just Windows audio and a click-through window.
 
@@ -47,7 +53,7 @@ Game ──► "Audio Lumination" (virtual 7.1 device, VB-CABLE)
 
 ## Install
 
-1. Download the latest release and run **`AudioLumination.exe`**.
+1. [Download **`AudioLumination.exe`**](https://github.com/Bjeffrey85/AudioLumination/releases/latest/download/AudioLumination.exe) from the [latest release](https://github.com/Bjeffrey85/AudioLumination/releases/latest) and run it.
 2. Click **OK**, then **Yes** when Windows asks for permission.
 3. If Windows asks *"Would you like to install this device software?"*, click **Install**.
 4. If asked, restart. Setup finishes automatically afterwards.
@@ -55,6 +61,8 @@ Game ──► "Audio Lumination" (virtual 7.1 device, VB-CABLE)
 > **⚠️ The app isn't code-signed yet.**
 > - **SmartScreen** may say "Windows protected your PC". Click **More info → Run anyway**.
 > - **Smart App Control** blocks unsigned apps completely. Turn it off under *Windows Security → App & browser control → Smart App Control* to use Audio Lumination.
+
+**Updates:** once installed, Audio Lumination keeps itself up to date. Windows asks for permission once per update, because the app lives in Program Files. You can turn this off with *Update automatically* in Settings, or check manually from the tray icon (**Check for updates**). Running a newer `AudioLumination.exe` you downloaded yourself also updates it without asking.
 
 **Offline install:** put `VBCABLE_Driver_Pack45.zip` from vb-cable.com next to the exe, and setup uses it instead of downloading.
 
@@ -101,7 +109,24 @@ g++ -O2 -std=c++17 tests/test_core.cpp src/core/al_core.cpp -o test && ./test
 | `src/win/setup.cpp` | Installer, VB-CABLE download / silent install / setup, uninstaller |
 | `src/win/main.cpp` | Tray icon, hotkey, settings window, calibration screen |
 
+| `src/win/updater.cpp` | Checks GitHub releases, downloads and verifies the new version |
+| `src/version.h` | The version number (the only place to change it) |
+
 Logs: `C:\ProgramData\AudioLumination\setup.log` and `%APPDATA%\AudioLumination\setup.log`
+
+## Releasing a new version
+
+1. Change the version in `src/version.h` (for example `1.2.1`) and commit.
+2. Tag and push: `git tag v1.2.1 && git push origin v1.2.1`.
+3. GitHub Actions (`.github/workflows/release.yml`) does the rest:
+   - runs the tests and builds `AudioLumination.exe`
+   - publishes a release with the exe and a zip attached
+
+   Installed copies pick it up automatically.
+
+The tag must match `src/version.h`, or the workflow stops. The updater only installs a file whose built-in version matches the release tag.
+
+> 🔐 Whoever controls this GitHub account controls what installed copies download, so keep two-factor authentication on.
 
 ## Roadmap
 
