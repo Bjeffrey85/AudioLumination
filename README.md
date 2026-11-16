@@ -2,7 +2,6 @@
 
 **See where game sounds come from.** Audio Lumination turns your game's surround sound into a glow around the edge of your screen, so deaf and hard-of-hearing players can tell where footsteps, gunfire and explosions are coming from.
 
-[![Latest release](https://github.com/Bjeffrey85/AudioLumination/releases)
 ![Windows 10/11](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6)
 ![C++17](https://img.shields.io/badge/C%2B%2B-17-00599C)
 ![Status: beta](https://img.shields.io/badge/status-beta-orange)
@@ -11,7 +10,7 @@
 
 ### ⬇️ [Download the latest version](https://github.com/Bjeffrey85/AudioLumination/releases/latest)
 
-[All releases and release notes](https://github.com/Bjeffrey85/AudioLumination/releases/latest)
+[All releases and release notes](https://github.com/Bjeffrey85/AudioLumination/releases)
 
 ---
 
