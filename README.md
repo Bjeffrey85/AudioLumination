@@ -9,9 +9,9 @@
 
 <!-- Add a screenshot or GIF here, e.g. ![Audio Lumination](docs/screenshot.png) -->
 
-### ⬇️ [Download the latest version](https://github.com/Bjeffrey85/AudioLumination/releases/latest/download/AudioLumination-Windows.zip)
+### ⬇️ [Download the latest version](https://github.com/Bjeffrey85/AudioLumination/releases/latest)
 
-[All releases and release notes](https://github.com/Bjeffrey85/AudioLumination/releases/latest)
+[All releases and release notes](https://github.com/Bjeffrey85/AudioLumination/releases)
 
 ---
 
